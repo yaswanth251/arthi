@@ -3,148 +3,149 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>Mobile-friendly Carousel</title>
+<title>Heart Carousel — Sparkles & Rain</title>
 <style>
 :root{
-  --bg1:#000;
+  --bg1:#050005;
   --bg2:#220033;
+  --heart-pink:#ff6b9a;
+  --heart-rose:#ff4b86;
+  --light1:#ffd6a5;
+  --light2:#9be7ff;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
   margin:0;
-  overflow:hidden;
   font-family:Roboto,serif;
   background:linear-gradient(135deg,var(--bg1),var(--bg2));
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-}
-.carousel{
-  position:relative;
-  z-index:1;
-  height:100vh;
-  overflow:visible;
-  pointer-events:none;
-  touch-action:pan-y;
-}
-.carousel-item{
-  --items:10;
-  --width:clamp(160px,48vw,360px);
-  --height:clamp(220px,60vw,480px);
-  --x:calc(var(--active) * 800%);
-  --y:calc(var(--active) * 200%);
-  --rot:calc(var(--active) * 120deg);
-  --opacity:calc(var(--zIndex) / var(--items) * 3 - 2);
   overflow:hidden;
-  position:absolute;
-  z-index:var(--zIndex);
-  width:var(--width);
-  height:var(--height);
-  margin:calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
-  border-radius:12px;
-  top:50%;
-  left:50%;
-  -webkit-user-select:none;
-     -moz-user-select:none;
-      -ms-user-select:none;
-          user-select:none;
-  transform-origin:0% 100%;
-  box-shadow:0 12px 48px 8px rgba(0,0,0,0.55);
-  background:#000;
-  pointer-events:all;
-  transform:translate(var(--x),var(--y)) rotate(var(--rot));
-  transition:transform 0.7s cubic-bezier(0,0.02,0,1);
-  will-change:transform,opacity;
-}
-.carousel-item .carousel-box{
-  position:absolute;
-  z-index:1;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  transition:opacity 0.6s cubic-bezier(0,0.02,0,1);
-  opacity:var(--opacity);
-  font-family:"Orelo-sw-db",serif;
-}
-.carousel-item .carousel-box:before{
-  content:"";
-  position:absolute;
-  z-index:1;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.32), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5));
-}
-.carousel-item .title{
-  position:absolute;
-  z-index:1;
-  color:#fff;
-  bottom:18px;
-  left:18px;
-  transition:opacity .6s cubic-bezier(0,0.02,0,1);
-  font-size:clamp(16px,3.6vw,28px);
-  text-shadow:0 4px 4px rgba(0,0,0,0.14);
-  line-height:1.05;
-}
-.carousel-item .num{
-  position:absolute;
-  z-index:1;
-  color:#fff;
-  top:12px;
-  left:18px;
-  transition:opacity .6s cubic-bezier(0,0.02,0,1);
-  font-size:clamp(22px,8vw,64px);
-  font-weight:600;
-}
-.carousel-item img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  pointer-events:none;
-  display:block;
 }
 
-/* layout & chrome */
-.layout{position:absolute;z-index:0;top:0;left:0;width:100%;height:100%;pointer-events:none}
+/* Carousel (kept responsive) */
+.carousel{position:relative;z-index:3;height:100vh;overflow:visible;pointer-events:none;touch-action:pan-y}
+.carousel-item{--items:10;--width:clamp(160px,48vw,360px);--height:clamp(220px,60vw,480px);--x:calc(var(--active) * 800%);--y:calc(var(--active) * 200%);--rot:calc(var(--active) * 120deg);--opacity:calc(var(--zIndex) / var(--items) * 3 - 2);overflow:hidden;position:absolute;z-index:var(--zIndex);width:var(--width);height:var(--height);margin:calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);border-radius:12px;top:50%;left:50%;user-select:none;transform-origin:0% 100%;box-shadow:0 12px 48px 8px rgba(0,0,0,0.55);background:#000;pointer-events:all;transform:translate(var(--x),var(--y)) rotate(var(--rot));transition:transform .7s cubic-bezier(.2,.9,.2,1);will-change:transform,opacity}
+.carousel-item .carousel-box{position:absolute;z-index:1;top:0;left:0;width:100%;height:100%;transition:opacity .6s cubic-bezier(.2,.9,.2,1);opacity:var(--opacity);font-family:"Orelo-sw-db",serif}
+.carousel-item .carousel-box:before{content:"";position:absolute;z-index:1;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(0,0,0,.32),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 50%,rgba(0,0,0,.5))}
+.carousel-item .title{position:absolute;z-index:1;color:#fff;bottom:18px;left:18px;transition:opacity .6s;font-size:clamp(16px,3.6vw,28px);text-shadow:0 4px 4px rgba(0,0,0,.14);line-height:1.05}
+.carousel-item .num{position:absolute;z-index:1;color:#fff;top:12px;left:18px;transition:opacity .6s;font-size:clamp(22px,8vw,64px);font-weight:600}
+.carousel-item img{width:100%;height:100%;object-fit:cover;pointer-events:none;display:block}
+.layout{position:absolute;z-index:1;top:0;left:0;width:100%;height:100%;pointer-events:none}
 .layout:before{content:"";position:absolute;z-index:1;top:0;left:80px;width:10px;height:100%;border:1px solid #fff;border-top:none;border-bottom:none;opacity:.12}
 .layout .box{position:absolute;bottom:0;left:30px;color:#fff;transform-origin:0% 10%;transform:rotate(-90deg);font-size:9px;line-height:1.4;text-transform:uppercase;opacity:.35}
 
-.logo{position:absolute;z-index:2;top:20px;right:18px;width:34px;height:34px;background:#fff;border-radius:50%;opacity:.6;display:flex;justify-content:center;align-items:center;font-family:"Orelo-sw-db",serif;pointer-events:all;color:black;text-decoration:none;font-size:20px;padding-bottom:.1em}
 
-.social{position:absolute;z-index:10;bottom:16px;right:18px;color:#fff;opacity:.45}
-.social a{display:inline-block;margin-left:6px}
-.social svg{--fill:#fff;width:34px;height:34px}
-
-/* cursors */
-.cursor{position:fixed;z-index:11;top:0;left:0;--size:40px;width:var(--size);height:var(--size);border-radius:50%;border:1px solid rgba(255,255,255,0.18);margin:calc(var(--size)*-0.5) 0 0 calc(var(--size)*-0.5);transition:transform .6s cubic-bezier(0,0.02,0,1);display:none;pointer-events:none}
-@media (pointer: fine){.cursor{display:block}}
+.cursor{position:fixed;z-index:11;top:0;left:0;--size:40px;width:var(--size);height:var(--size);border-radius:50%;border:1px solid rgba(255,255,255,.18);margin:calc(var(--size)*-0.5) 0 0 calc(var(--size)*-0.5);transition:transform .6s cubic-bezier(.2,.9,.2,1);display:none;pointer-events:none}
+@media (pointer:fine){.cursor{display:block}}
 .cursor2{--size:2px;transition-duration:.45s}
+@media (max-width:720px){.carousel-item{transition:transform .45s;--width:clamp(220px,72vw,360px);--height:clamp(260px,72vw,480px)}.social{bottom:12px;right:14px}.layout:before{left:56px}.layout .box{left:18px}.cursor{display:none}}
 
-/* responsive tuning */
-@media (max-width:720px){
-  .carousel-item{transition:transform .45s cubic-bezier(.2,.9,.2,1);--width:clamp(220px,72vw,360px);--height:clamp(260px,72vw,480px)}
-  .carousel{touch-action:pan-y}
-  .logo{top:18px;right:14px;width:32px;height:32px}
-  .social{bottom:12px;right:14px}
-  .layout:before{left:56px}
-  .layout .box{left:18px}
-  .cursor{display:none}
+.dedication{position:fixed;z-index:7;left:50%;top:12%;transform:translateX(-50%);padding:12px 20px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.03));backdrop-filter:blur(6px);color:#fff;font-weight:600;font-size:clamp(12px,4vw,18px);text-align:center;box-shadow:0 6px 30px rgba(0,0,0,.45)}
+.dedication .heart-inline{display:inline-block;margin-left:10px;color:var(--heart-rose);transform:translateY(2px)}
+@media (max-width:520px){.dedication{top:8%;padding:10px 14px;font-size:14px}}
+
+.controls{position:fixed;z-index:6;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:8px;pointer-events:all}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.06);opacity:.9;cursor:pointer}
+.dot.active{background:linear-gradient(90deg,var(--heart-rose),var(--heart-pink));box-shadow:0 6px 18px rgba(255,80,140,.14)}
+
+/* Sparkling hearts layer (background continuous sparkles) */
+.sparkles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.sparkle{
+  position:absolute;
+  width:10px;height:10px;
+  transform:rotate(45deg);
+  border-radius:4px 4px 0 0;
+  background:linear-gradient(135deg,var(--heart-pink),var(--heart-rose));
+  opacity:0;
+  will-change:transform,opacity;
+  filter:drop-shadow(0 8px 12px rgba(255,80,140,.08));
+  animation:twinkle 3s linear infinite;
+}
+.sparkle::before,.sparkle::after{content:"";position:absolute;background:inherit;border-radius:50%;width:100%;height:100%;top:-50%;left:0}
+@keyframes twinkle{
+  0%{opacity:0;transform:translateY(0) scale(.6) rotate(45deg)}
+  10%{opacity:.85;transform:translateY(-10px) scale(1.05) rotate(45deg)}
+  50%{opacity:.5;transform:translateY(-20px) scale(.9) rotate(45deg)}
+  100%{opacity:0;transform:translateY(-30px) scale(.6) rotate(45deg)}
 }
 
-/* accessible focus */
-.carousel-item:focus{outline:3px solid rgba(255,255,255,0.12)}
+/* Hearts container for rain & bigger floating hearts */
+.hearts{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:visible}
+
+/* falling rain style (from top) */
+.fall{
+  position:fixed;
+  top:-40px;
+  width:22px;height:22px;
+  transform:rotate(45deg);
+  border-radius:5px 5px 0 0;
+  background:linear-gradient(135deg,var(--heart-pink),var(--heart-rose));
+  will-change:transform,opacity;
+  filter:drop-shadow(0 8px 18px rgba(255,80,140,.12));
+  animation:fallDown linear forwards;
+}
+.fall.small{width:12px;height:12px;border-radius:3px 3px 0 0}
+.fall.large{width:34px;height:34px;border-radius:6px 6px 0 0}
+@keyframes fallDown{
+  0%{transform:translateY(-20vh) rotate(0) scale(.9);opacity:0}
+  8%{opacity:1}
+  100%{transform:translateY(110vh) rotate(720deg) scale(1.05);opacity:0}
+}
+
+/* occasional floating hearts (like previous floatUp) */
+.float{
+  position:absolute;
+  width:18px;height:18px;transform:rotate(45deg);
+  border-radius:4px 4px 0 0;background:linear-gradient(135deg,var(--heart-pink),var(--heart-rose));
+  animation:floatUp 9s cubic-bezier(.2,.8,.2,1) forwards;
+  filter:drop-shadow(0 8px 12px rgba(255,70,120,.12));
+}
+@keyframes floatUp{
+  0%{transform:translateY(0) rotate(0) scale(.9);opacity:0}
+  10%{opacity:1}
+  100%{transform:translateY(-140vh) rotate(360deg) scale(1.05);opacity:0}
+}
+
+/* lights */
+.light-layer{position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen}
+.light{position:absolute;border-radius:50%;filter:blur(40px);opacity:0.25;transform:translate3d(0,0,0)}
+.light.l1{width:420px;height:420px;background:radial-gradient(circle at 30% 30%,var(--light1),transparent 40%);left:6%;top:8%;animation:drift1 8s ease-in-out infinite}
+.light.l2{width:320px;height:320px;background:radial-gradient(circle at 40% 40%,var(--light2),transparent 45%);right:8%;top:20%;opacity:.22;animation:drift2 10s ease-in-out infinite}
+@keyframes drift1{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(8px) translateX(18px)}100%{transform:translateY(0) translateX(0)}}
+@keyframes drift2{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-10px) translateX(-18px)}100%{transform:translateY(0) translateX(0)}}
+
+/* small utility */
+.hidden{display:none}
 </style>
 </head>
 <body>
 
-<div class="carousel">
+<!-- Sparkles background (many small hearts sparkling) -->
+<div class="sparkles" id="sparkles"></div>
+
+<!-- Light glows -->
+<div class="light-layer" aria-hidden="true">
+  <div class="light l1"></div>
+  <div class="light l2"></div>
+</div>
+
+<!-- Hearts area for rain & floats -->
+<div class="hearts" id="hearts"></div>
+
+<!-- Dedication -->
+<div class="dedication">
+  To the most beautiful girl I have met in my school <span class="heart-inline">💖</span>
+</div>
+
+<!-- Carousel content (same as before) -->
+<div class="carousel" id="carousel">
   <div class="carousel-item" tabindex="0">
     <div class="carousel-box">
       <div class="title">Hi 👋</div>
       <div class="num">01</div>
-      <img src="./im2.jpg" alt="slide 1">
+      <img src="./im2.jpg" alt="">
     </div>
   </div>
 
@@ -152,7 +153,7 @@ body{
     <div class="carousel-box">
       <div class="title">I want to tell you Something 😍</div>
       <div class="num">02</div>
-      <img src="./im4.jpg" alt="slide 2">
+      <img src="./im4.jpg" alt="">
     </div>
   </div>
 
@@ -160,7 +161,7 @@ body{
     <div class="carousel-box">
       <div class="title">Please Keep Dragging 😊</div>
       <div class="num">03</div>
-      <img src="./im6.jpg" alt="slide 3">
+      <img src="./im6.jpg" alt="">
     </div>
   </div>
 
@@ -168,7 +169,7 @@ body{
     <div class="carousel-box">
       <div class="title">You are Amazing 🤩</div>
       <div class="num">04</div>
-      <img src="./im1.jpg" alt="slide 4">
+      <img src="./im1.jpg" alt="">
     </div>
   </div>
 
@@ -176,7 +177,7 @@ body{
     <div class="carousel-box">
       <div class="title">Most Beautiful Person on Earth 💯</div>
       <div class="num">05</div>
-      <img src="./im2.jpg" alt="slide 5">
+      <img src="./im2.jpg" alt="">
     </div>
   </div>
 
@@ -184,7 +185,7 @@ body{
     <div class="carousel-box">
       <div class="title">And Cutest 🎀</div>
       <div class="num">06</div>
-      <img src="./im3.jpg" alt="slide 6">
+      <img src="./im3.jpg" alt="">
     </div>
   </div>
 
@@ -192,7 +193,7 @@ body{
     <div class="carousel-box">
       <div class="title">And Since I met You 😗</div>
       <div class="num">07</div>
-      <img src="./im4.jpg" alt="slide 7">
+      <img src="./im4.jpg" alt="">
     </div>
   </div>
 
@@ -200,7 +201,7 @@ body{
     <div class="carousel-box">
       <div class="title">I feel very Lucky Everyday 😇</div>
       <div class="num">08</div>
-      <img src="./im5.jpg" alt="slide 8">
+      <img src="./im5.jpg" alt="">
     </div>
   </div>
 
@@ -208,7 +209,7 @@ body{
     <div class="carousel-box">
       <div class="title">and I have Crush on You 🥰</div>
       <div class="num">09</div>
-      <img src="./im6.jpg" alt="slide 9">
+      <img src="./im6.jpg" alt="">
     </div>
   </div>
 
@@ -216,7 +217,7 @@ body{
     <div class="carousel-box">
       <div class="title">I love You ❤️</div>
       <div class="num">10</div>
-      <img src="./im7.jpg" alt="slide 10">
+      <img src="./im7.jpg" alt="">
     </div>
   </div>
 </div>
@@ -225,115 +226,243 @@ body{
   <div class="box">High-end, full-service visual content creation for lifestyle branding.</div>
 </div>
 
-<a href="https://www.supah.it" target="_blank" class="logo">S</a>
-<div class="social">
-  <a href="#"><svg><use xlink:href="#ico-linkedin"></use></svg></a>
-  <a href="https://www.instagram.com/developer_rahul_/" target="_blank"><svg><use xlink:href="#ico-instagram"></use></svg></a>
-</div>
 
-<svg style="display:none">
-  <symbol id="ico-instagram" viewBox="0 0 35 35"><!-- trimmed for brevity --></symbol>
-  <symbol id="ico-linkedin" viewBox="0 0 35 35"><!-- trimmed for brevity --></symbol>
-</svg>
+
+<div class="controls" id="dots"></div>
 
 <div class="cursor"></div>
 <div class="cursor cursor2"></div>
 
 <script>
-let progress=50
-let startX=0
-let active=0
-let isDown=false
-const speedWheel=0.02
-const speedDrag=-0.12
-const decel=0.92
+/* --------------------
+  Utilities & settings
+   --------------------*/
+const $items = document.querySelectorAll('.carousel-item')
+const hearts = document.getElementById('hearts')
+const sparkles = document.getElementById('sparkles')
+const dotsWrap = document.getElementById('dots')
+let progress = 50, startX = 0, active = 0, isDown = false
+const speedWheel = 0.02, speedDrag = -0.12
 
-const $items=document.querySelectorAll('.carousel-item')
-const $cursors=document.querySelectorAll('.cursor')
-
-const getZindex=(array,index)=>(array.map((_,i)=>(index===i)?array.length:array.length-Math.abs(index-i)))
-const displayItems=(item,index,active)=>{
-  const zIndex=getZindex([...$items],active)[index]
-  item.style.setProperty('--zIndex',zIndex)
-  item.style.setProperty('--active',(index-active)/$items.length)
+/* --------------------
+  Create dots for carousel
+   --------------------*/
+function createDot(i){
+  const d = document.createElement('div')
+  d.className = 'dot'
+  d.addEventListener('click', ()=>{ progress = (i/($items.length-1))*100; animate(); })
+  dotsWrap.appendChild(d)
+}
+for(let i=0;i<$items.length;i++) createDot(i)
+function updateDots(){
+  const ds = dotsWrap.querySelectorAll('.dot')
+  ds.forEach((d, idx)=> d.classList.toggle('active', idx===active))
 }
 
-const animate=()=>{
-  progress=Math.max(0,Math.min(progress,100))
-  active=Math.floor(progress/100*($items.length-1))
-  $items.forEach((item,index)=>displayItems(item,index,active))
+/* --------------------
+  Carousel math
+   --------------------*/
+const getZindex = (array, index) => (array.map((_, i) => (index === i) ? array.length : array.length - Math.abs(index - i)))
+const displayItems = (item, index, active) => {
+  const zIndex = getZindex([...$items], active)[index]
+  item.style.setProperty('--zIndex', zIndex)
+  item.style.setProperty('--active', (index-active)/$items.length)
+}
+function animate(){
+  progress = Math.max(0, Math.min(progress, 100))
+  active = Math.floor(progress/100*($items.length-1))
+  $items.forEach((it, i) => displayItems(it, i, active))
+  updateDots()
 }
 animate()
 
-$items.forEach((item,i)=>{
-  item.addEventListener('click',()=>{
-    progress=(i/$items.length)*100+10
-    animate()
-  })
-  item.addEventListener('keydown',e=>{
-    if(e.key==='Enter' || e.key===' '){
-      progress=(i/$items.length)*100+10
-      animate()
-    }
-  })
+/* --------------------
+  Drag / wheel handlers
+   --------------------*/
+$items.forEach((item, i) => item.addEventListener('click', ()=>{ progress = (i/$items.length) * 100 + 10; animate() }))
+document.addEventListener('wheel', e => { progress += e.deltaY * speedWheel; animate() }, {passive:true})
+document.addEventListener('mousedown', e => { isDown = true; startX = e.clientX })
+document.addEventListener('mousemove', e => {
+  if(!isDown) return
+  const x = e.clientX
+  progress += (x - startX) * speedDrag
+  startX = x
+  animate()
+})
+document.addEventListener('mouseup', ()=>{ isDown = false; snap() })
+document.addEventListener('touchstart', e => { isDown = true; startX = e.touches[0].clientX }, {passive:true})
+document.addEventListener('touchmove', e => {
+  if(!isDown) return
+  const x = e.touches[0].clientX
+  progress += (x - startX) * speedDrag
+  startX = x
+  e.preventDefault()
+  animate()
+}, {passive:false})
+document.addEventListener('touchend', ()=>{ isDown = false; snap() })
+function snap(){
+  const n = Math.round(progress/100*($items.length-1))
+  progress = (n/($items.length-1))*100
+  animate()
+}
+
+/* --------------------
+  Sparkles background
+  Create many small hearts that twinkle randomly
+   --------------------*/
+function spawnSparkle(){
+  const s = document.createElement('div')
+  s.className = 'sparkle'
+  // random sizes
+  const size = 6 + Math.random()*18
+  s.style.width = size + 'px'
+  s.style.height = size + 'px'
+  // random position across viewport (allow slightly outside edges)
+  s.style.left = (Math.random()*120 - 10) + '%'
+  s.style.top = (Math.random()*110 - 10) + '%'
+  // random animation delay/duration to vary twinkles
+  const delay = Math.random()*4
+  const duration = 2 + Math.random()*3
+  s.style.animationDelay = delay + 's'
+  s.style.animationDuration = duration + 's'
+  // random opacity
+  s.style.opacity = (0.4 + Math.random()*0.8).toString()
+  sparkles.appendChild(s)
+  // remove after a while to keep DOM clean (cycles keep it "many")
+  setTimeout(()=> s.remove(), (delay + duration + 0.6)*1000)
+}
+// seed initial sparkles densely for a sparkling background
+for(let i=0;i<40;i++) spawnSparkle()
+// keep creating occasional sparkles to maintain effect
+setInterval(()=> {
+  // spawn 1-3 new sparkles
+  const n = 1 + Math.floor(Math.random()*3)
+  for(let i=0;i<n;i++) spawnSparkle()
+}, 700)
+
+/* --------------------
+  Floating gentle hearts (like ambient)
+   --------------------*/
+function spawnFloat(){
+  const f = document.createElement('div')
+  f.className = 'float'
+  const size = 10 + Math.random()*28
+  f.style.width = size + 'px'
+  f.style.height = size + 'px'
+  // place near bottom so it rises upward
+  f.style.left = (Math.random()*100) + '%'
+  f.style.bottom = (-20 - Math.random()*40) + 'px'
+  const delay = Math.random()*3
+  f.style.animationDelay = delay + 's'
+  f.style.opacity = (0.4 + Math.random()*0.6).toString()
+  hearts.appendChild(f)
+  setTimeout(()=> f.remove(), (9 + delay)*1000)
+}
+setInterval(()=> spawnFloat(), 900)
+for(let i=0;i<8;i++) spawnFloat()
+
+/* --------------------
+  Rain hearts (when user touches/clicks anywhere)
+  - creates many hearts that start at random x at top and fall down
+   --------------------*/
+function rainHearts(amount = 28){
+  const vw = window.innerWidth
+  for(let i=0;i<amount;i++){
+    const h = document.createElement('div')
+    h.className = 'fall'
+    // size variety
+    const r = Math.random()
+    if(r > 0.92) h.classList.add('large')
+    else if(r < 0.25) h.classList.add('small')
+    // random horizontal position across width
+    const left = Math.random()*100
+    h.style.left = left + '%'
+    // random horizontal drift (we'll apply by transform X during animation using CSS variables)
+    const drift = (Math.random()*40 - 20) // px
+    const dur = 2 + Math.random()*2.6 // seconds
+    // random delay so rain spreads out
+    const delay = Math.random()*0.2
+    h.style.animationDuration = dur + 's'
+    h.style.animationDelay = delay + 's'
+    // slight rotation start and end by using transform in keyframes; we add inline transform for small position jitter
+    h.style.opacity = (0.8 + Math.random()*0.2).toString()
+    // random left offset introduced via translateX using CSS variable
+    h.style.setProperty('--drift', drift + 'px')
+    // tweak animation by embedding a small keyframe via style attribute (avoid generating global CSS)
+    // but we can apply translateX from inline style in a small setTimeout to give a drift effect
+    hearts.appendChild(h)
+    // add horizontal translation using transition to simulate drift while CSS fallDown handles vertical + rotation
+    // We'll animate using requestAnimationFrame for horizontal drift (lightweight)
+    const start = performance.now() + delay*1000
+    const total = dur*1000
+    const startLeftPx = (left/100)*vw
+    const endLeftPx = startLeftPx + drift
+    // animate horizontal position via transform translateX over duration
+    (function animateDrift(el, s, t, startLeft, endLeft){
+      function step(now){
+        if(now < s) { requestAnimationFrame(step); return }
+        const elapsed = Math.min(now - s, t)
+        const progress = elapsed / t
+        const currentX = startLeft + (endLeft - startLeft) * easeOutCubic(progress)
+        el.style.transform = `translateX(${currentX - startLeft}px) rotate(${720*progress}deg) scale(${1 - 0.05*progress})`
+        if(elapsed < t){ requestAnimationFrame(step) } else {
+          // finished, allow CSS fallDown to finish opacity/translateY; we'll remove element after animation ends
+        }
+      }
+      requestAnimationFrame(step)
+    })(h, start, total, startLeftPx, endLeftPx)
+    // cleanup after animation completes
+    setTimeout(()=> { try{ h.remove() }catch(e){} }, (dur + delay + 0.2)*1000 + 200)
+  }
+}
+/* easing for drift */
+function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3) }
+
+/* --------------------
+  Make rain when user touches / clicks anywhere
+  - tap/click anywhere triggers a rain across the screen
+   --------------------*/
+function onPointerStart(e){
+  // prefer generating a denser rain on deliberate taps, but simple clicks will produce moderate amount
+  const amount = Math.floor(28 + Math.random()*18) // 28-46 hearts
+  rainHearts(amount)
+}
+window.addEventListener('pointerdown', onPointerStart, {passive:true})
+// support older touch events as fallback
+window.addEventListener('touchstart', onPointerStart, {passive:true})
+
+/* --------------------
+  Also allow a smaller rain when user double taps / double clicks
+   --------------------*/
+let lastTap = 0
+window.addEventListener('click', (e)=>{
+  const now = Date.now()
+  if(now - lastTap < 350){
+    // double click detected
+    rainHearts(60)
+  }
+  lastTap = now
 })
 
-const snapToNearest=()=>{
-  const nearest=Math.round(progress/100*($items.length-1))
-  progress=(nearest/($items.length-1))*100
-  animate()
+/* --------------------
+  Ambient small random rain occasionally (gentle surprise)
+   --------------------*/
+setInterval(()=> {
+  if(Math.random() < 0.12) rainHearts(12 + Math.floor(Math.random()*20))
+}, 7000)
+
+/* --------------------
+  Floating keys / anim drift for light
+   --------------------*/
+const keyLight = document.querySelector('.light.l1')
+if(keyLight){
+  let hue = 0
+  setInterval(()=>{ hue = (hue + 0.25) % 360; keyLight.style.filter = `hue-rotate(${hue}deg) blur(40px)` }, 140)
 }
 
-const handleWheel=e=>{
-  const wheelProgress=e.deltaY*speedWheel
-  progress=progress+wheelProgress
-  animate()
-}
-
-const handleMouseMove=e=>{
-  if(e.type==='mousemove'){
-    $cursors.forEach($cursor=>$cursor.style.transform=`translate(${e.clientX}px, ${e.clientY}px)`)
-  }
-  if(!isDown) return
-  const x=e.clientX||(e.touches&&e.touches[0].clientX)||0
-  const mouseProgress=(x-startX)*speedDrag
-  progress=progress+mouseProgress
-  startX=x
-  animate()
-}
-
-const handleMouseDown=e=>{
-  isDown=true
-  startX=e.clientX||(e.touches&&e.touches[0].clientX)||0
-}
-
-const handleMouseUp=()=>{
-  isDown=false
-  snapToNearest()
-}
-
-document.addEventListener('wheel',handleWheel,{passive:true})
-document.addEventListener('mousedown',handleMouseDown)
-document.addEventListener('mousemove',handleMouseMove)
-document.addEventListener('mouseup',handleMouseUp)
-document.addEventListener('touchstart',e=>{handleMouseDown(e);}, {passive:true})
-document.addEventListener('touchmove',e=>{ if(isDown){ e.preventDefault(); handleMouseMove(e); } }, {passive:false})
-document.addEventListener('touchend',handleMouseUp)
-
-let isMomentum=false
-let velocity=0
-let lastX=0
-const momentumLoop=()=>{
-  if(!isMomentum) return
-  velocity*=decel
-  if(Math.abs(velocity)<0.01){ isMomentum=false; snapToNearest(); return }
-  progress+=velocity
-  animate()
-  requestAnimationFrame(momentumLoop)
-}
-
-document.addEventListener('pointerdown',e=>{ if(e.pointerType==='touch'){ document.documentElement.style.cursor='grabbing' }})
-document.addEventListener('pointerup',e=>{ if(e.pointerType==='touch'){ document.documentElement.style.cursor='' }})
+/* --------------------
+  Accessibility: make sure interactive elements can be focused (carousel item already has tabindex)
+   --------------------*/
 </script>
 
 </body>
