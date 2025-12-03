@@ -23,8 +23,6 @@ body{
   -moz-osx-font-smoothing:grayscale;
   overflow:hidden;
 }
-
-/* Carousel (kept responsive) */
 .carousel{position:relative;z-index:3;height:100vh;overflow:visible;pointer-events:none;touch-action:pan-y}
 .carousel-item{--items:10;--width:clamp(160px,48vw,360px);--height:clamp(220px,60vw,480px);--x:calc(var(--active) * 800%);--y:calc(var(--active) * 200%);--rot:calc(var(--active) * 120deg);--opacity:calc(var(--zIndex) / var(--items) * 3 - 2);overflow:hidden;position:absolute;z-index:var(--zIndex);width:var(--width);height:var(--height);margin:calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);border-radius:12px;top:50%;left:50%;user-select:none;transform-origin:0% 100%;box-shadow:0 12px 48px 8px rgba(0,0,0,0.55);background:#000;pointer-events:all;transform:translate(var(--x),var(--y)) rotate(var(--rot));transition:transform .7s cubic-bezier(.2,.9,.2,1);will-change:transform,opacity}
 .carousel-item .carousel-box{position:absolute;z-index:1;top:0;left:0;width:100%;height:100%;transition:opacity .6s cubic-bezier(.2,.9,.2,1);opacity:var(--opacity);font-family:"Orelo-sw-db",serif}
@@ -35,23 +33,15 @@ body{
 .layout{position:absolute;z-index:1;top:0;left:0;width:100%;height:100%;pointer-events:none}
 .layout:before{content:"";position:absolute;z-index:1;top:0;left:80px;width:10px;height:100%;border:1px solid #fff;border-top:none;border-bottom:none;opacity:.12}
 .layout .box{position:absolute;bottom:0;left:30px;color:#fff;transform-origin:0% 10%;transform:rotate(-90deg);font-size:9px;line-height:1.4;text-transform:uppercase;opacity:.35}
-.social{position:absolute;z-index:6;bottom:16px;right:18px;color:#fff;opacity:.55;font-size:18px}
-.social a{display:inline-block;margin-left:10px;color:#fff;text-decoration:none}
-
 .cursor{position:fixed;z-index:11;top:0;left:0;--size:40px;width:var(--size);height:var(--size);border-radius:50%;border:1px solid rgba(255,255,255,.18);margin:calc(var(--size)*-0.5) 0 0 calc(var(--size)*-0.5);transition:transform .6s cubic-bezier(.2,.9,.2,1);display:none;pointer-events:none}
 @media (pointer:fine){.cursor{display:block}}
 .cursor2{--size:2px;transition-duration:.45s}
-@media (max-width:720px){.carousel-item{transition:transform .45s;--width:clamp(220px,72vw,360px);--height:clamp(260px,72vw,480px)}.social{bottom:12px;right:14px}.layout:before{left:56px}.layout .box{left:18px}.cursor{display:none}}
-
+@media (max-width:720px){.carousel-item{transition:transform .45s;--width:clamp(220px,72vw,360px);--height:clamp(260px,72vw,480px)}.layout:before{left:56px}.layout .box{left:18px}.cursor{display:none}}
 .dedication{position:fixed;z-index:7;left:50%;top:12%;transform:translateX(-50%);padding:12px 20px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.03));backdrop-filter:blur(6px);color:#fff;font-weight:600;font-size:clamp(12px,4vw,18px);text-align:center;box-shadow:0 6px 30px rgba(0,0,0,.45)}
 .dedication .heart-inline{display:inline-block;margin-left:10px;color:var(--heart-rose);transform:translateY(2px)}
-@media (max-width:520px){.dedication{top:8%;padding:10px 14px;font-size:14px}}
-
 .controls{position:fixed;z-index:6;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:8px;pointer-events:all}
 .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.06);opacity:.9;cursor:pointer}
 .dot.active{background:linear-gradient(90deg,var(--heart-rose),var(--heart-pink));box-shadow:0 6px 18px rgba(255,80,140,.14)}
-
-/* Sparkling hearts layer (background continuous sparkles) */
 .sparkles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .sparkle{
   position:absolute;
@@ -71,11 +61,7 @@ body{
   50%{opacity:.5;transform:translateY(-20px) scale(.9) rotate(45deg)}
   100%{opacity:0;transform:translateY(-30px) scale(.6) rotate(45deg)}
 }
-
-/* Hearts container for rain & bigger floating hearts */
 .hearts{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:visible}
-
-/* falling rain style (from top) */
 .fall{
   position:fixed;
   top:-40px;
@@ -94,8 +80,6 @@ body{
   8%{opacity:1}
   100%{transform:translateY(110vh) rotate(720deg) scale(1.05);opacity:0}
 }
-
-/* occasional floating hearts (like previous floatUp) */
 .float{
   position:absolute;
   width:18px;height:18px;transform:rotate(45deg);
@@ -108,39 +92,52 @@ body{
   10%{opacity:1}
   100%{transform:translateY(-140vh) rotate(360deg) scale(1.05);opacity:0}
 }
-
-/* lights */
 .light-layer{position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen}
 .light{position:absolute;border-radius:50%;filter:blur(40px);opacity:0.25;transform:translate3d(0,0,0)}
 .light.l1{width:420px;height:420px;background:radial-gradient(circle at 30% 30%,var(--light1),transparent 40%);left:6%;top:8%;animation:drift1 8s ease-in-out infinite}
 .light.l2{width:320px;height:320px;background:radial-gradient(circle at 40% 40%,var(--light2),transparent 45%);right:8%;top:20%;opacity:.22;animation:drift2 10s ease-in-out infinite}
 @keyframes drift1{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(8px) translateX(18px)}100%{transform:translateY(0) translateX(0)}}
 @keyframes drift2{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-10px) translateX(-18px)}100%{transform:translateY(0) translateX(0)}}
-
-/* small utility */
 .hidden{display:none}
+
+/* audio control */
+.audio-control{
+  position:fixed;
+  z-index:12;
+  bottom:22px;
+  left:22px;
+  width:56px;height:56px;border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--heart-rose),var(--heart-pink));
+  box-shadow:0 10px 30px rgba(255,80,140,.18);
+  cursor:pointer;
+  transform-origin:center;
+  transition:transform .18s ease,opacity .2s ease;
+  opacity:0;pointer-events:none;
+}
+.audio-control.show{opacity:1;pointer-events:auto}
+.audio-control svg{width:22px;height:22px;fill:#fff}
+.audio-hint{
+  position:fixed;z-index:12;left:88px;bottom:30px;color:#fff;font-size:13px;opacity:.9;font-weight:600;text-shadow:0 6px 18px rgba(0,0,0,.45)
+}
+@media (max-width:520px){.audio-hint{display:none}}
 </style>
 </head>
 <body>
 
-<!-- Sparkles background (many small hearts sparkling) -->
 <div class="sparkles" id="sparkles"></div>
 
-<!-- Light glows -->
 <div class="light-layer" aria-hidden="true">
   <div class="light l1"></div>
   <div class="light l2"></div>
 </div>
 
-<!-- Hearts area for rain & floats -->
 <div class="hearts" id="hearts"></div>
 
-<!-- Dedication -->
 <div class="dedication">
   To the most beautiful girl I have met in my school <span class="heart-inline">💖</span>
 </div>
 
-<!-- Carousel content (same as before) -->
 <div class="carousel" id="carousel">
   <div class="carousel-item" tabindex="0">
     <div class="carousel-box">
@@ -227,31 +224,26 @@ body{
   <div class="box">High-end, full-service visual content creation for lifestyle branding.</div>
 </div>
 
-<div class="social">
-  <a href="#" aria-label="LinkedIn">in</a>
-  <a href="#" aria-label="Instagram">ig</a>
-</div>
-
 <div class="controls" id="dots"></div>
 
 <div class="cursor"></div>
 <div class="cursor cursor2"></div>
 
+<div id="audioControl" class="audio-control" aria-label="Play music" role="button" tabindex="0">
+  <svg id="audioIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 9v6h4l5 4V5L8 9H4z"/></svg>
+</div>
+<div id="audioHint" class="audio-hint hidden">Tap to play music</div>
+
+<audio id="bgm" src="./Thelavaarithey-Kanureppala-Ringtone.mp3" loop preload="auto"></audio>
+
 <script>
-/* --------------------
-  Utilities & settings
-   --------------------*/
 const $items = document.querySelectorAll('.carousel-item')
 const hearts = document.getElementById('hearts')
 const sparkles = document.getElementById('sparkles')
 const dotsWrap = document.getElementById('dots')
-// Set initial progress to 0 so the first card (01) is visible on page load
 let progress = 0, startX = 0, active = 0, isDown = false
 const speedWheel = 0.02, speedDrag = -0.12
 
-/* --------------------
-  Create dots for carousel
-   --------------------*/
 function createDot(i){
   const d = document.createElement('div')
   d.className = 'dot'
@@ -263,10 +255,6 @@ function updateDots(){
   const ds = dotsWrap.querySelectorAll('.dot')
   ds.forEach((d, idx)=> d.classList.toggle('active', idx===active))
 }
-
-/* --------------------
-  Carousel math
-   --------------------*/
 const getZindex = (array, index) => (array.map((_, i) => (index === i) ? array.length : array.length - Math.abs(index - i)))
 const displayItems = (item, index, active) => {
   const zIndex = getZindex([...$items], active)[index]
@@ -279,12 +267,8 @@ function animate(){
   $items.forEach((it, i) => displayItems(it, i, active))
   updateDots()
 }
-// Ensure initial render shows first card
 animate()
 
-/* --------------------
-  Drag / wheel handlers
-   --------------------*/
 $items.forEach((item, i) => item.addEventListener('click', ()=>{ progress = (i/$items.length) * 100 + 10; animate() }))
 document.addEventListener('wheel', e => { progress += e.deltaY * speedWheel; animate() }, {passive:true})
 document.addEventListener('mousedown', e => { isDown = true; startX = e.clientX })
@@ -312,50 +296,34 @@ function snap(){
   animate()
 }
 
-/* --------------------
-  Sparkles background
-  Create many small hearts that twinkle randomly
-   --------------------*/
 function spawnSparkle(){
   const s = document.createElement('div')
   s.className = 'sparkle'
-  // random sizes
   const size = 6 + Math.random()*18
   s.style.width = size + 'px'
   s.style.height = size + 'px'
-  // random position across viewport (allow slightly outside edges)
   s.style.left = (Math.random()*120 - 10) + '%'
   s.style.top = (Math.random()*110 - 10) + '%'
-  // random animation delay/duration to vary twinkles
   const delay = Math.random()*4
   const duration = 2 + Math.random()*3
   s.style.animationDelay = delay + 's'
   s.style.animationDuration = duration + 's'
-  // random opacity
   s.style.opacity = (0.4 + Math.random()*0.8).toString()
   sparkles.appendChild(s)
-  // remove after a while to keep DOM clean (cycles keep it "many")
   setTimeout(()=> s.remove(), (delay + duration + 0.6)*1000)
 }
-// seed initial sparkles densely for a sparkling background
 for(let i=0;i<40;i++) spawnSparkle()
-// keep creating occasional sparkles to maintain effect
 setInterval(()=> {
-  // spawn 1-3 new sparkles
   const n = 1 + Math.floor(Math.random()*3)
   for(let i=0;i<n;i++) spawnSparkle()
 }, 700)
 
-/* --------------------
-  Floating gentle hearts (like ambient)
-   --------------------*/
 function spawnFloat(){
   const f = document.createElement('div')
   f.className = 'float'
   const size = 10 + Math.random()*28
   f.style.width = size + 'px'
   f.style.height = size + 'px'
-  // place near bottom so it rises upward
   f.style.left = (Math.random()*100) + '%'
   f.style.bottom = (-20 - Math.random()*40) + 'px'
   const delay = Math.random()*3
@@ -367,43 +335,28 @@ function spawnFloat(){
 setInterval(()=> spawnFloat(), 900)
 for(let i=0;i<8;i++) spawnFloat()
 
-/* --------------------
-  Rain hearts (when user touches/clicks anywhere)
-  - creates many hearts that start at random x at top and fall down
-   --------------------*/
 function rainHearts(amount = 28){
   const vw = window.innerWidth
   for(let i=0;i<amount;i++){
     const h = document.createElement('div')
     h.className = 'fall'
-    // size variety
     const r = Math.random()
     if(r > 0.92) h.classList.add('large')
     else if(r < 0.25) h.classList.add('small')
-    // random horizontal position across width
     const left = Math.random()*100
     h.style.left = left + '%'
-    // random horizontal drift (we'll apply by transform X during animation using CSS variables)
-    const drift = (Math.random()*40 - 20) // px
-    const dur = 2 + Math.random()*2.6 // seconds
-    // random delay so rain spreads out
+    const drift = (Math.random()*40 - 20)
+    const dur = 2 + Math.random()*2.6
     const delay = Math.random()*0.2
     h.style.animationDuration = dur + 's'
     h.style.animationDelay = delay + 's'
-    // slight rotation start and end by using transform in keyframes; we add inline transform for small position jitter
     h.style.opacity = (0.8 + Math.random()*0.2).toString()
-    // random left offset introduced via translateX using CSS variable
     h.style.setProperty('--drift', drift + 'px')
-    // tweak animation by embedding a small keyframe via style attribute (avoid generating global CSS)
-    // but we can apply translateX from inline style in a small setTimeout to give a drift effect
     hearts.appendChild(h)
-    // add horizontal translation using transition to simulate drift while CSS fallDown handles vertical + rotation
-    // We'll animate using requestAnimationFrame for horizontal drift (lightweight)
     const start = performance.now() + delay*1000
     const total = dur*1000
     const startLeftPx = (left/100)*vw
     const endLeftPx = startLeftPx + drift
-    // animate horizontal position via transform translateX over duration
     (function animateDrift(el, s, t, startLeft, endLeft){
       function step(now){
         if(now < s) { requestAnimationFrame(step); return }
@@ -411,66 +364,115 @@ function rainHearts(amount = 28){
         const progress = elapsed / t
         const currentX = startLeft + (endLeft - startLeft) * easeOutCubic(progress)
         el.style.transform = `translateX(${currentX - startLeft}px) rotate(${720*progress}deg) scale(${1 - 0.05*progress})`
-        if(elapsed < t){ requestAnimationFrame(step) } else {
-          // finished, allow CSS fallDown to finish opacity/translateY; we'll remove element after animation ends
-        }
+        if(elapsed < t){ requestAnimationFrame(step) }
       }
       requestAnimationFrame(step)
     })(h, start, total, startLeftPx, endLeftPx)
-    // cleanup after animation completes
     setTimeout(()=> { try{ h.remove() }catch(e){} }, (dur + delay + 0.2)*1000 + 200)
   }
 }
-/* easing for drift */
 function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3) }
 
-/* --------------------
-  Make rain when user touches / clicks anywhere
-  - tap/click anywhere triggers a rain across the screen
-   --------------------*/
 function onPointerStart(e){
-  // prefer generating a denser rain on deliberate taps, but simple clicks will produce moderate amount
-  const amount = Math.floor(28 + Math.random()*18) // 28-46 hearts
+  const amount = Math.floor(28 + Math.random()*18)
   rainHearts(amount)
 }
 window.addEventListener('pointerdown', onPointerStart, {passive:true})
-// support older touch events as fallback
 window.addEventListener('touchstart', onPointerStart, {passive:true})
 
-/* --------------------
-  Also allow a smaller rain when user double taps / double clicks
-   --------------------*/
 let lastTap = 0
 window.addEventListener('click', (e)=>{
   const now = Date.now()
   if(now - lastTap < 350){
-    // double click detected
     rainHearts(60)
   }
   lastTap = now
 })
 
-/* --------------------
-  Ambient small random rain occasionally (gentle surprise)
-   --------------------*/
 setInterval(()=> {
   if(Math.random() < 0.12) rainHearts(12 + Math.floor(Math.random()*20))
 }, 7000)
 
-/* --------------------
-  Floating keys / anim drift for light
-   --------------------*/
 const keyLight = document.querySelector('.light.l1')
 if(keyLight){
   let hue = 0
   setInterval(()=>{ hue = (hue + 0.25) % 360; keyLight.style.filter = `hue-rotate(${hue}deg) blur(40px)` }, 140)
 }
 
-/* --------------------
-  Accessibility: make sure interactive elements can be focused (carousel item already has tabindex)
-   --------------------*/
+/* audio logic */
+const audio = document.getElementById('bgm')
+audio.volume = 0.6
+const audioControl = document.getElementById('audioControl')
+const audioIcon = document.getElementById('audioIcon')
+const audioHint = document.getElementById('audioHint')
+
+function setIconPlaying(playing){
+  if(playing){
+    audioIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>' // pause
+  } else {
+    audioIcon.innerHTML = '<path d="M4 9v6h4l5 4V5L8 9H4z"/>' // play
+  }
+}
+
+function showControl(){
+  audioControl.classList.add('show')
+  audioHint.classList.remove('hidden')
+}
+
+function hideControl(){
+  audioControl.classList.remove('show')
+  audioHint.classList.add('hidden')
+  audioControl.style.transform = 'scale(1)'
+}
+
+function tryAutoPlay(){
+  const p = audio.play()
+  if(p !== undefined){
+    p.then(()=> {
+      setIconPlaying(true)
+      hideControl()
+    }).catch(()=> {
+      setIconPlaying(false)
+      showControl()
+    })
+  } else {
+    setIconPlaying(false)
+    showControl()
+  }
+}
+
+tryAutoPlay()
+
+audioControl.addEventListener('click', ()=> {
+  if(audio.paused){
+    audio.play().then(()=> {
+      setIconPlaying(true)
+      hideControl()
+    }).catch(()=> {
+      setIconPlaying(false)
+      showControl()
+    })
+  } else {
+    audio.pause()
+    setIconPlaying(false)
+    showControl()
+  }
+})
+
+audioControl.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); audioControl.click() }
+})
+
+window.addEventListener('pointerdown', ()=> {
+  if(audio.paused){
+    audio.play().then(()=> {
+      setIconPlaying(true)
+      hideControl()
+    }).catch(()=>{})
+  }
+},{passive:true})
+
 </script>
 
 </body>
 </html>
-
